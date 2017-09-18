@@ -24,3 +24,11 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+main {
+  background-color: white;
+  line-height: 300px;
+  margin: 0 auto;
+  width: 450px;
+  min-height: 100vh;
+}
