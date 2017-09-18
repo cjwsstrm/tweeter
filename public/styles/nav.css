@@ -5,17 +5,24 @@ height: 80px;
 position: fixed;
 right: 0;
 left: 0;
+top: 0;
 padding-left: 2em;
 padding-right: 2em;
+z-index: 1;
 }
 
-.logo {
+#nav-bar .logo {
+  float: left;
   width: 80px;
   height: 80px;
 }
 
-.header {
-  
+#nav-bar .header {
+  float: left;
+  position:absolute;
+  padding-left: 10px;
+  font-size: 200%;
+  line-height: 230%;
 }
 
 /*border-bottom: 1px solid rgba(0,0,0,0.25);*/
