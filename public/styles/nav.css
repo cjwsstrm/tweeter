@@ -1,14 +1,14 @@
 #nav-bar {
-background-color: #00a087;
-color: #e8fdff;
-height: 80px;
-position: fixed;
-right: 0;
-left: 0;
-top: 0;
-padding-left: 2em;
-padding-right: 2em;
-/*z-index: 1;*/
+  background-color: #00a087;
+  color: #e8fdff;
+  height: 80px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  padding-left: 2em;
+  padding-right: 2em;
+  /*z-index: 1;*/
 }
 
 #nav-bar .logo {
