@@ -1,16 +1,31 @@
 .new-tweet {
-
+  background-color: teal;
+  border-radius: 2.5px;
+  border-color: ;
+  padding: ;
 }
 
 
 h2 {
+  text-decoration-line: underline;
+  left: 0;
+  right: 0;
+}
+
+form {
 
 }
 
 textarea {
-
+  margin-left: 10px;
+  width: 430px;
 }
 
 .counter {
+  float: right;
+  padding-right: 10px
+}
+
+input {
   
 }

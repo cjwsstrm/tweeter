@@ -25,11 +25,12 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
-main {
+.container {
   background-color: white;
-  line-height: 140px;
+  padding-top: 140px;
   margin: 0 auto;
   width: 450px;
+  min-height: 100vh;
 
 
 }
