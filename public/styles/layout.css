@@ -27,8 +27,9 @@ body {
 
 main {
   background-color: white;
-  line-height: 300px;
+  line-height: 140px;
   margin: 0 auto;
   width: 450px;
-  min-height: 100vh;
+
+
 }
