@@ -21,69 +21,15 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
-.container {
-  background-color: white;
-  padding-top: 140px;
-  margin: auto;
-  width: 450px;
-  min-height: 100vh;
-}
-
-.all-tweets {
-  background-color: white;
-  padding-top: 20px;
-  margin: auto;
-  width: 450px;
-  min-height: 100vh;
-}
-
-article {
-  background-color: 	white;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  margin-left: 2em;
-  margin-right: 2em;
-  padding: 5px;
-}
-
-.posted-tweet-body {
-  padding: 20px
-}
-
-.tweet-header {
-  background-color: 	#eee;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  padding: 10px;
-}
-
-.tweet-footer {
-border-top: 1px solid rgba(0, 0, 0, 0.10);
-}
-
-.tweet-footer.tweet-actions {
-  float: right;
-}
-
-.tweet-timestamp {
-  padding: 5px;
-}
-
-.user-handle {
-  float: right;
-}
-
-.user-name {
-padding-left: 10px;
-line-height:
-}
-
-.user-image {
-  width: 50%;
-  max-width: 50px;
-  max-height: 50px;
-}
+ .container {
+   background-color: white;
+   padding-top: 140px;
+   margin: auto;
+   width: 450px;
+   min-height: 100vh;
+ }
