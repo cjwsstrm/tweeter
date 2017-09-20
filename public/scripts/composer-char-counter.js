@@ -1,14 +1,19 @@
 $(function() {
+  const MAX_LENGTH = 140;
   $('.new-tweet').on('input', 'textarea', function () {
-    const counter = $(this).closest('form').find('.counter');
+    const errorClass = 'error';
+    const counter = $(this).siblings('.counter');
     const inputLength = $(this).val().length;
-    const remainingBudget = 140 - inputLength;
+    const remainingBudget = MAX_LENGTH - inputLength;
     counter.text(remainingBudget);
     if (remainingBudget < 0) {
-      $('.counter').css('color', 'red');
+      counter.addClass(errorClass);
+    } else {
+      counter.removeClass(errorClass);
     }
-    else $('.counter').css('color', '#244751');
   });
+
+  $('.counter').text(MAX_LENGTH);
 });
 
 
