@@ -5,21 +5,48 @@
  */
 $(function() {
   function createTweetElement(data) {
-    const $article = $("<article>").addClass(".posted-tweet");
-    const $header = $("<header>").addClass(".tweet-header");
-    const $textContent = $("<div>").addClass(".posted-tweet-body");
-    const $footer = $("<footer>").addClass
+    const $article = $("<article>").addClass("posted-tweet");
 
-    $header.text(data.user.name);
+    const $header = $("<header>").addClass("tweet-header");
+    const $headerUserName = $("<span>").addClass("user-name");
+    const $headerUserHandle = $("<span>").addClass("user-handle");
+    const $headerUserImage = $("<img>").addClass("user-image");
+
+    const $tweetBody = $("<div>").addClass("posted-tweet-body");
+
+    const $footer = $("<footer>").addClass("tweet-footer");
+    const $footerTimestamp = $("<span>").addClass("tweet-timestamp");
+    const $footerActions = $("<span>").addClass("tweet-actions");
+    const $footerActionLike = $("<i>").addClass("fa fa-heart");
+    const $footerActionFlag = $("<i>").addClass("fa fa-flag");
+    const $footerActionRetweet = $("<i>").addClass("fa fa-retweet");
 
 
+    $headerUserImage.attr("src", data.user.avatars.small)
+    $headerUserName.text(data.user.name);
+    $headerUserHandle.text(data.user.handle);
+    $header.append($headerUserHandle);
+    $header.append($headerUserImage);
+    $header.append($headerUserName);
 
-    $article.append($header)
+    const textContent = $tweetBody.text(data.content.text);
+    $tweetBody.append(textContent);
 
-    return $article;
+    $footerTimestamp.text(`${data.created_at} days ago.`);
+    $footerActions.append($footerActionLike, $footerActionFlag, $footerActionRetweet);
+    $footer.append($footerTimestamp);
+    $footer.append($footerActions);
+
+    $article.append($header, $tweetBody, $footer);
+
+   return $article;
   }
 
 
+
+  // <img src="https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png" class="user-image">
+  // <span class="user-name">Descartes</span>
+  // <span class="user-handle">@rd</span>
 
 //add new elements in section class="all-tweets"
   //var $tweet = $("<article>").addClass("tweet");
