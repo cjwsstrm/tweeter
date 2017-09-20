@@ -47,7 +47,7 @@ article {
   border-radius: 5px;
   margin-left: 2em;
   margin-right: 2em;
-  padding:;
+  padding: 5px;
 }
 
 .posted-tweet-body {
@@ -75,6 +75,11 @@ border-top: 1px solid rgba(0, 0, 0, 0.10);
 
 .user-handle {
   float: right;
+}
+
+.user-name {
+padding-left: 10px;
+line-height:
 }
 
 .user-image {
