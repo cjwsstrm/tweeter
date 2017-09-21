@@ -4,26 +4,27 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(function() {
-  $("form").on("submit", function( event ) {
-    if($('textarea').val() === "") {
+  $("form").on("submit", function(event) {
+    event.preventDefault();
+    if($("textarea").val() === "") {
       alert('Please write something');
+      return;
     }
-    if ($('textarea').val() > 140) {
+    else if ($("textarea").val().length > 140) {
       alert('Too many characters');
+      return;
     } else {
         $.ajax({
         url: "/tweets", //localhost:8080?
         method: "POST",
-        data: ($("form").serialize),
+        data: ($(this).serialize()),
         success: function(data) {
-          createTweetElement();
-            // Event.preventDefault();
-            // console.log( $( this ).serialize() );
+          console.log(this.data);
         },
         failure: function(err) {
         }
       });
-      }
+    }
   });
 
   function createTweetElement(data) {
