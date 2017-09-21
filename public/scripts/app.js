@@ -17,10 +17,12 @@ $(function() {
     const $footer = $("<footer>").addClass("tweet-footer");
     const $footerTimestamp = $("<span>").addClass("tweet-timestamp");
     const $footerActions = $("<span>").addClass("tweet-actions");
-    const $footerActionLike = $("<i>").addClass("fa fa-heart");
-    const $footerActionFlag = $("<i>").addClass("fa fa-flag");
-    const $footerActionRetweet = $("<i>").addClass("fa fa-retweet");
+    // const $footerActionLike = $("<i>").addClass("fa fa-heart").attr("aria-hidden", true);
+    // const $footerActionFlag = $("<i>").addClass("fa fa-flag").attr("aria-hidden", true);
+    // const $footerActionRetweet = $("<i>").addClass("fa fa-retweet").attr("aria-hidden", true);
 
+    //footerActionLike, Flag, Retweet would not space out properly and found no
+    //other workaround but to append them as below to get proper spacing.
 
     $headerUserImage.attr("src", data.user.avatars.small)
     $headerUserName.text(data.user.name);
@@ -32,53 +34,82 @@ $(function() {
     const textContent = $tweetBody.text(data.content.text);
     $tweetBody.append(textContent);
 
+
     $footerTimestamp.text(`${data.created_at} days ago.`);
-    $footerActions.append($footerActionLike, $footerActionFlag, $footerActionRetweet);
     $footer.append($footerTimestamp);
     $footer.append($footerActions);
+    $footerActions.append($(`
+      <i class="fa fa-heart" aria-hidden="true"></i>
+      <i class="fa fa-flag" aria-hidden="true"></i>
+      <i class="fa fa-retweet" aria-hidden="true"></i>`))
 
-    $article.append($header, $tweetBody, $footer);
+      $article.append($header, $tweetBody, $footer);
+
+    // $footerActions.append($footerActionLike);
+    // $footerActions.append($footerActionFlag);
+    // $footerActions.append($footerActionRetweet);
 
    return $article;
-  }
+ };
 
 
-
-  // <img src="https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png" class="user-image">
-  // <span class="user-name">Descartes</span>
-  // <span class="user-handle">@rd</span>
-
-//add new elements in section class="all-tweets"
-  //var $tweet = $("<article>").addClass("tweet");
-
-//add content to those elements
-//append(), text(), attr[], ??
-
-
+  function renderTweets (tweets) {
+      var tweetContainer = $(".all-tweets");
+      tweetContainer.empty();
+      tweets.forEach(function(tweet) {
+        tweetContainer.prepend(createTweetElement(tweet));
+    })
+    // loops through tweets
+    // calls createTweetElement for each tweet
+    // takes return value and appends it to the tweets container
+  };
 
 
-// Test / driver code (temporary). Eventually will get this from the server.
-var tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": {
-      "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-      "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-      "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+    var data = [
+  {
+    "user": {
+      "name": "Newton",
+      "avatars": {
+        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
+        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+      },
+      "handle": "@SirIsaac"
     },
-    "handle": "@SirIsaac"
+    "content": {
+      "text": "If I have seen further it is by standing on the shoulders of giants"
+    },
+    "created_at": 1461116232227
   },
-  "content": {
-    "text": "If I have seen further it is by standing on the shoulders of giants"
+  {
+    "user": {
+      "name": "Descartes",
+      "avatars": {
+        "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
+        "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
+        "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
+      },
+      "handle": "@rd" },
+    "content": {
+      "text": "Je pense , donc je suis"
+    },
+    "created_at": 1461113959088
   },
-  "created_at": 1461116232227
-}
-
-var $tweet = createTweetElement(tweetData);
-
-// Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
- $('.all-tweets').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-
-
+  {
+    "user": {
+      "name": "Johann von Goethe",
+      "avatars": {
+        "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
+        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
+        "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
+      },
+      "handle": "@johann49"
+    },
+    "content": {
+      "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
+    },
+    "created_at": 1461113796368
+  }
+];
+renderTweets(data);
 });
