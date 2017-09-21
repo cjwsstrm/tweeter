@@ -4,6 +4,11 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(function() {
+  $(".new-tweet").hide();
+  $( ".compose-button" ).on("click", function() {
+    $( ".new-tweet" ).slideToggle();
+    $("textarea").focus();
+  });
 
   function loadtweets () {
     $.ajax({
@@ -22,19 +27,17 @@ $(function() {
 
   $("form").on("submit", function() {
     event.preventDefault();
-    if ($("textarea").val() === "") {
+    if ($("textarea").val() === "") {           //Refactor textarea and other repetetive;
       alert('Please write something');
-      return;
     }
     else if ($("textarea").val().length > 140) {
       alert('Too many characters');
-      return;
     } else {
         $.ajax({
         url: "/tweets", //localhost:8080?
         method: "POST",
         data: ($(this).serialize()),
-        success: function(data) {
+        success: function() {
           loadtweets();
         },
         failure: function(err) {
