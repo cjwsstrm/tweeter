@@ -4,6 +4,28 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(function() {
+  $("form").on("submit", function( event ) {
+    if($('textarea').val() === "") {
+      alert('Please write something');
+    }
+    if ($('textarea').val() > 140) {
+      alert('Too many characters');
+    } else {
+        $.ajax({
+        url: "/tweets", //localhost:8080?
+        method: "POST",
+        data: ($("form").serialize),
+        success: function(data) {
+          createTweetElement();
+            // Event.preventDefault();
+            // console.log( $( this ).serialize() );
+        },
+        failure: function(err) {
+        }
+      });
+      }
+  });
+
   function createTweetElement(data) {
     const $article = $("<article>").addClass("posted-tweet");
 
@@ -43,8 +65,7 @@ $(function() {
       <i class="fa fa-flag" aria-hidden="true"></i>
       <i class="fa fa-retweet" aria-hidden="true"></i>`))
 
-      $article.append($header, $tweetBody, $footer);
-
+    $article.append($header, $tweetBody, $footer);
     // $footerActions.append($footerActionLike);
     // $footerActions.append($footerActionFlag);
     // $footerActions.append($footerActionRetweet);
@@ -58,10 +79,8 @@ $(function() {
       tweetContainer.empty();
       tweets.forEach(function(tweet) {
         tweetContainer.prepend(createTweetElement(tweet));
-    })
-    // loops through tweets
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
+    });
+
   };
 
 
