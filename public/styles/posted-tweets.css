@@ -28,11 +28,13 @@ article:hover .tweet-actions {
 .posted-tweet-body {
   padding: 40px;
   padding-left: 9px;
+  word-wrap:break-word;
 }
 
 .tweet-header {
   background-color: #eee;
   border: none;
+  border-radius: 4px;
   opacity: 0.6;
   padding: 8px 8px 4px 8px;
 }

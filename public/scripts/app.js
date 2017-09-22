@@ -77,8 +77,8 @@ $(function() {
     const textContent = $tweetBody.text(data.content.text);
     $tweetBody.append(textContent);
 
-
-    $footerTimestamp.text(`${data.created_at} days ago.`);
+    const dayOfPost = new Date(data.created_at)
+    $footerTimestamp.text(moment(dayOfPost).fromNow());
     $footer.append($footerTimestamp);
     $footer.append($footerActions);
     $footerActions.append($(`
