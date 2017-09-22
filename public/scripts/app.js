@@ -45,12 +45,6 @@ $(function() {
     });
   }
 
-  $(".new-tweet").hide();
-  $(".nav-actions").on("click", function() {
-    $(".new-tweet").slideToggle();
-    $("textarea").focus();
-  });
-
   function loadtweets () {
     $.ajax({
       url: "/tweets",
@@ -89,4 +83,10 @@ $(function() {
     }
   });
 
+
+  $(".new-tweet").hide();
+  $(".nav-actions").on("click", function() {
+    $(".new-tweet").slideToggle();
+    $("textarea").focus();
+  });
 });

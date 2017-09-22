@@ -12,10 +12,9 @@ const MONGODB_URI = "mongodb://localhost:27017/tweeter";
   app.use(express.static("public"));
 
   MongoClient.connect(MONGODB_URI, (err, db) => {
-
     if (err) {
       console.error(`Failed to connect: ${MONGODB_URI}`);
-      process.exit(1); //the 1 indicates exiting on an error.
+      process.exit(1);
     }
     console.log(`Connected to mongodb: ${MONGODB_URI}`);
 
