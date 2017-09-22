@@ -8,12 +8,12 @@
 }
 
 
-h2 {
+.new-tweet h2 {
   border-bottom: 1px solid black;
   margin: 0 0 0.75em;
 }
 
-textarea {
+.new-tweet textarea {
   padding: 5px;
   width: 100%;
 }

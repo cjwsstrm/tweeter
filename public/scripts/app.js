@@ -83,7 +83,6 @@ $(function() {
     }
   });
 
-
   $(".new-tweet").hide();
   $(".nav-actions").on("click", function() {
     $(".new-tweet").slideToggle();
