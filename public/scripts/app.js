@@ -5,8 +5,8 @@
  */
 $(function() {
   $(".new-tweet").hide();
-  $( ".compose-button" ).on("click", function() {
-    $( ".new-tweet" ).slideToggle();
+  $(".nav-actions").on("click", function() {
+    $(".new-tweet").slideToggle();
     $("textarea").focus();
   });
 
@@ -39,6 +39,7 @@ $(function() {
         data: ($(this).serialize()),
         success: function() {
           loadtweets();
+          $("textarea").val(''); //clears textarea after submitting tweet
         },
         failure: function(err) {
           console.log(err);
