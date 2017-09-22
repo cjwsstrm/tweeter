@@ -36,6 +36,6 @@ as part of this repository (and therefore not listed in the dependencies).
 
 ## Screenshots
 
-!["compose box shown"](URL)
-!["compose box hidden"](URL)
-!["mobile example"](URL)
+!["compose box shown"](https://github.com/cjwsstrm/tweeter/blob/master/docs/visibleComposeBox.png?raw=true)
+!["compose box hidden"](https://github.com/cjwsstrm/tweeter/blob/master/docs/hiddenComposeBox.png?raw=true)
+!["mobile example"](https://github.com/cjwsstrm/tweeter/blob/master/docs/mobileExample.png?raw=true)
