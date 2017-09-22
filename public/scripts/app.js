@@ -1,8 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 $(function() {
   $(".new-tweet").hide();
   $(".nav-actions").on("click", function() {
@@ -27,25 +22,26 @@ $(function() {
 
   $("form").on("submit", function() {
     event.preventDefault();
-    if ($("textarea").val() === "") {           //Refactor textarea and other repetetive;
+    const $textlength = $("textarea").val();
+    if ($textlength === "") {
       alert('Please write something');
     }
-    else if ($("textarea").val().length > 140) {
+    else if ($textlength.length > 140) {
       alert('Too many characters');
     } else {
         $.ajax({
-        url: "/tweets", //localhost:8080?
-        method: "POST",
-        data: ($(this).serialize()),
-        success: function() {
-          loadtweets();
-          $("textarea").val(''); //clears textarea after submitting tweet
-        },
-        failure: function(err) {
-          console.log(err);
-        }
-      });
-    }
+          url: "/tweets",
+          method: "POST",
+          data: ($(this).serialize()),
+          success: function() {
+            loadtweets();
+            $("textarea").val('');
+          },
+          failure: function(err) {
+            console.log(err);
+          }
+        });
+      }
   });
 
   function createTweetElement(data) {
@@ -61,47 +57,36 @@ $(function() {
     const $footer = $("<footer>").addClass("tweet-footer");
     const $footerTimestamp = $("<span>").addClass("tweet-timestamp");
     const $footerActions = $("<span>").addClass("tweet-actions");
-    // const $footerActionLike = $("<i>").addClass("fa fa-heart").attr("aria-hidden", true);
-    // const $footerActionFlag = $("<i>").addClass("fa fa-flag").attr("aria-hidden", true);
-    // const $footerActionRetweet = $("<i>").addClass("fa fa-retweet").attr("aria-hidden", true);
 
-    //footerActionLike, Flag, Retweet would not space out properly and found no
-    //other workaround but to append them as below to get proper spacing.
-
-    $headerUserImage.attr("src", data.user.avatars.small)
+    $headerUserImage.attr("src", data.user.avatars.small);
     $headerUserName.text(data.user.name);
     $headerUserHandle.text(data.user.handle);
     $header.append($headerUserHandle);
     $header.append($headerUserImage);
     $header.append($headerUserName);
 
-    const textContent = $tweetBody.text(data.content.text);
-    $tweetBody.append(textContent);
+    const tweetContent = $tweetBody.text(data.content.text);
+    $tweetBody.append(tweetContent);
 
-    const dayOfPost = new Date(data.created_at)
-    $footerTimestamp.text(moment(dayOfPost).fromNow());
+    const timeOfPost = new Date(data.created_at);
+    $footerTimestamp.text(moment(timeOfPost).fromNow());
     $footer.append($footerTimestamp);
     $footer.append($footerActions);
     $footerActions.append($(`
       <i class="fa fa-heart" aria-hidden="true"></i>
       <i class="fa fa-flag" aria-hidden="true"></i>
-      <i class="fa fa-retweet" aria-hidden="true"></i>`))
+      <i class="fa fa-retweet" aria-hidden="true"></i>`));
 
     $article.append($header, $tweetBody, $footer);
-    // $footerActions.append($footerActionLike);
-    // $footerActions.append($footerActionFlag);
-    // $footerActions.append($footerActionRetweet);
 
    return $article;
  };
-
 
   function renderTweets (tweets) {
       var tweetContainer = $(".all-tweets");
       tweetContainer.empty();
       tweets.forEach(function(tweet) {
         tweetContainer.prepend(createTweetElement(tweet));
-    });
-
+      });
   };
 });

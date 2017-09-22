@@ -5,16 +5,12 @@
   margin-left: 2em;
   margin-right: 2em;
   padding: 10px;
-
 }
 
 
 h2 {
   border-bottom: 1px solid black;
   margin: 0 0 0.75em;
-}
-
-form {
 }
 
 textarea {
@@ -29,8 +25,4 @@ textarea {
 
 .error {
   color: red;
-}
-
-input {
-
 }
