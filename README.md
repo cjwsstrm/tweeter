@@ -33,3 +33,9 @@ as part of this repository (and therefore not listed in the dependencies).
 - "express": "^4.13.4",
 - "md5": "^2.1.0",
 - "mongodb": "^2.2.31"
+
+## Screenshots
+
+!["compose box shown"](URL)
+!["compose box hidden"](URL)
+!["mobile example"](URL)
