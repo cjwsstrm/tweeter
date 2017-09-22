@@ -1,49 +1,4 @@
 $(function() {
-  $(".new-tweet").hide();
-  $(".nav-actions").on("click", function() {
-    $(".new-tweet").slideToggle();
-    $("textarea").focus();
-  });
-
-  function loadtweets () {
-    $.ajax({
-      url: "/tweets",
-      method: "GET",
-      success: function (data) {
-        renderTweets(data);
-      },
-      failure: function (err) {
-        console.log(err);
-      }
-    })
-  };
-
-  loadtweets();
-
-  $("form").on("submit", function() {
-    event.preventDefault();
-    const $textlength = $("textarea").val();
-    if ($textlength === "") {
-      alert('Please write something');
-    }
-    else if ($textlength.length > 140) {
-      alert('Too many characters');
-    } else {
-        $.ajax({
-          url: "/tweets",
-          method: "POST",
-          data: ($(this).serialize()),
-          success: function() {
-            loadtweets();
-            $("textarea").val('');
-          },
-          failure: function(err) {
-            console.log(err);
-          }
-        });
-      }
-  });
-
   function createTweetElement(data) {
     const $article = $("<article>").addClass("posted-tweet");
 
@@ -79,14 +34,59 @@ $(function() {
 
     $article.append($header, $tweetBody, $footer);
 
-   return $article;
- };
+    return $article;
+  }
 
   function renderTweets (tweets) {
-      var tweetContainer = $(".all-tweets");
-      tweetContainer.empty();
-      tweets.forEach(function(tweet) {
-        tweetContainer.prepend(createTweetElement(tweet));
+    var tweetContainer = $(".all-tweets");
+    tweetContainer.empty();
+    tweets.forEach(function(tweet) {
+      tweetContainer.prepend(createTweetElement(tweet));
+    });
+  }
+
+  $(".new-tweet").hide();
+  $(".nav-actions").on("click", function() {
+    $(".new-tweet").slideToggle();
+    $("textarea").focus();
+  });
+
+  function loadtweets () {
+    $.ajax({
+      url: "/tweets",
+      method: "GET",
+      success: function (data) {
+        renderTweets(data);
+      },
+      failure: function (err) {
+        console.log(err);
+      }
+    });
+  }
+
+  loadtweets();
+
+  $("form").on("submit", function() {
+    event.preventDefault();
+    const $textlength = $("textarea").val();
+    if ($textlength === "") {
+      alert('Please write something');
+    } else if ($textlength.length > 140) {
+      alert('Too many characters');
+    } else {
+      $.ajax({
+        url: "/tweets",
+        method: "POST",
+        data: ($(this).serialize()),
+        success: function() {
+          loadtweets();
+          $("textarea").val('');
+        },
+        failure: function(err) {
+          console.log(err);
+        }
       });
-  };
+    }
+  });
+
 });
