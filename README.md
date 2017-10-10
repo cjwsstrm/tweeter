@@ -28,11 +28,11 @@ as part of this repository (and therefore not listed in the dependencies).
 
 - Express
 - Node 5.10.x or above
-- "body-parser": "^1.15.2",
-- "chance": "^1.0.2",
-- "express": "^4.13.4",
-- "md5": "^2.1.0",
-- "mongodb": "^2.2.31"
+- body-parser
+- chance
+- express
+- md5
+- mongodb
 
 ## Screenshots
 
